@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "resume-builder-client"
+    }
+  },
+  "defaultProject": "resume-builder-client",
+  "cli": {
+    "analytics": false
+  }
 }
