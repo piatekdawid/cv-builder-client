@@ -1,0 +1,21 @@
+<div id="content">
+  <h2>Please enter your hobbies:</h2>
+  <button type="submit" style="position: fixed; right: 0; bottom: 60%;" (click)="moveForward()" class="move-button">></button>
+      <button type="submit" style="position: fixed; left: 0; bottom: 60%" (click)="moveBackward()" class="move-button"><</button>
+  <div id="container">
+    <input class="input" [formControl]="hobbyControl" #hobby placeholder="Enter hobby">
+    <br>
+    <button type="submit" class="button" (click)="onSubmit(hobby.value)">+</button>
+  </div>
+  <div id="container">
+    <h2>Hobbies:</h2>
+    <div class="grid-container">
+      <ng-container *ngFor="let hobb of hobbyList, let i = index">
+        <div>
+          <button class="del-button" #hobb (click)="deleteHobby(hobb)">✖</button>
+          <br>
+          {{hobb}}
+        </div>
+      </ng-container>
+    </div>
+  </div>

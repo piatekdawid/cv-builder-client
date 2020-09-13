@@ -1,0 +1,23 @@
+<div id="content">
+    <h2>Please enter your profiles:</h2>
+    <button type="submit" style="position: fixed; right: 0; bottom: 60%;" (click)="moveForward()" class="move-button">></button>
+      <button type="submit" style="position: fixed; left: 0; bottom: 60%" (click)="moveBackward()" class="move-button"><</button>
+      <div id="container">
+        <input class="input" [formControl]="profileControl" #profile placeholder="Enter profile">
+        <br>
+        <button type="submit" class="button" (click)="onSubmit(profile.value)">+</button>
+        <!-- <button type="submit" class="button" (click)="onSubmitExit(profile.value)">Next</button> -->
+      </div>
+    <div id="container">
+      <h2>Profiles:</h2>
+      <div class="grid-container">
+        <ng-container *ngFor="let profil of profileList, let i = index">
+          <div>
+            <button class="del-button" #profil (click)="deleteProfile(profil)">✖</button>
+            <br>
+            {{profil}}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>

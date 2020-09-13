@@ -1,0 +1,32 @@
+<div id="content">
+    <h2>Please enter your language:</h2>
+    <div id="container">
+      <button type="submit" style="position: fixed; right: 0; bottom: 60%;" (click)="moveForward()" class="move-button">></button>
+      <button type="submit" style="position: fixed; left: 0; bottom: 60%" (click)="moveBackward()" class="move-button"><</button>
+      <form [formGroup]="languageForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="text" class="input" placeholder="Enter language" formControlName="language"/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="input" placeholder="Enter proficiency" formControlName="proficiency"/>
+          </div>
+        <br>
+        <button type="submit" class="button" [disabled]="!languageForm.valid">Add</button>
+      </form>
+    </div>
+    <div id="container">
+      <h2>Languages:</h2>
+      <div class="grid-container">
+        <ng-container *ngFor="let languag of languageList, let i = index">
+          <div>
+            <button class="del-button" #languag (click)="deleteLanguage(languag)">✖</button>
+            <br>
+            <b>{{languag.language}}</b>
+            <br>
+            <b>{{languag.proficiency}}</b>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  

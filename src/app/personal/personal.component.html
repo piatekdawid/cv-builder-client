@@ -1,0 +1,68 @@
+<div id="content">
+  <h2>Please enter your personal informations:</h2>
+  <div id="container">
+    <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input type="text" class="input" placeholder="Enter first name" formControlName="firstName" />
+        <span class="span-red" *ngIf="(firstName.dirty || firstName.touched) && firstName.invalid && firstName.errors?.required">
+          <br>
+          First name is required.
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="input" placeholder="Enter last name" formControlName="lastName" />
+        <span class="span-red" *ngIf="(lastName.dirty || lastName.touched) && lastName.invalid && lastName.errors?.required">
+          <br>
+          Last name is required.
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="input" placeholder="Enter address" formControlName="address" />
+        <span class="span-red" *ngIf="(address.dirty || address.touched) && address.invalid && address.errors?.required">
+          <br>
+          Address is required.
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="input" placeholder="Enter zip code" formControlName="zipCode" />
+        <span class="span-red" *ngIf="(zipCode.dirty || zipCode.touched) && zipCode.invalid && zipCode.errors?.required">
+          <br>
+          Zip code is required.
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="input" placeholder="Enter city" formControlName="city" />
+        <span class="span-red" *ngIf="(city.dirty || city.touched) && city.invalid && city.errors?.required">
+          <br>
+          City is required.
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="input" placeholder="Enter email" formControlName="email" />
+        <span class="span-red" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors?.required">
+          <br>
+          Email is required.
+        </span>
+        <span class="span-red" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors?.pattern">
+          <br>
+          Wrong email entered.
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="input" placeholder="Enter phone number" formControlName="phoneNumber" />
+        <span class="span-red" *ngIf="(phoneNumber.dirty || phoneNumber.touched) && phoneNumber.invalid && phoneNumber.errors?.required">
+          <br>
+          Mobile is required.
+        </span>
+        <span class="span-red" *ngIf="(phoneNumber.dirty || phoneNumber.touched) && phoneNumber.invalid && phoneNumber.errors?.invalidNumber">
+          <br>
+          Value has to be a number above 8 digits.
+        </span>
+      </div>
+      <div class="form-group">
+        <textarea id="textarea" placeholder="Enter clause here..." formControlName="clauzule"></textarea>
+      </div>
+      <button type="submit" class="button" [disabled]="!personForm.valid">Next</button>
+    </form>
+  </div>
+</div>

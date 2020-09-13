@@ -1,0 +1,76 @@
+<div id="content">
+    <h2>Please enter your experience:</h2>
+    <div id="container">
+      <button type="submit" style="position: fixed; right: 0; bottom: 60%;" (click)="moveForward()" class="move-button">></button>
+      <button type="submit" style="position: fixed; left: 0; bottom: 60%" (click)="moveBackward()" class="move-button"><</button>
+      <form [formGroup]="experienceForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="text" class="input" placeholder="Enter start date" formControlName="dateStarted"/>
+            <span class="span-red" *ngIf="(dateStarted.dirty || dateStarted.touched) && dateStarted.invalid && dateStarted.errors?.required">
+              <br>
+              Date is required.
+            </span>
+            <span class="span-red" *ngIf="(dateStarted.dirty || dateStarted.touched) && dateStarted.invalid && dateStarted.errors?.invalidDate">
+              <br>
+              Date have to be in format: yyyy-MM-dd.
+            </span>
+          </div>
+          <div class="form-group">
+            <input type="text" class="input" placeholder="Enter finish date" formControlName="dateEnded"/>
+            <span class="span-red" *ngIf="(dateEnded.dirty || dateEnded.touched) && dateEnded.invalid && dateEnded.errors?.required">
+              <br>
+              Date is required.
+            </span>
+            <span class="span-red" *ngIf="(dateEnded.dirty || dateEnded.touched) && dateEnded.invalid && dateEnded.errors?.invalidDate">
+              <br>
+              Date have to be in format: yyyy-MM-dd.
+            </span>
+          </div>
+          <div class="form-group">
+            <input type="text" class="input" placeholder="Enter place" formControlName="place"/>
+            <span class="span-red" *ngIf="(place.dirty || place.touched) && place.invalid && place.errors?.required">
+              <br>
+              Place is required.
+            </span>
+          </div>
+          <div class="form-group">
+            <input type="text" class="input" placeholder="Enter your workplace" formControlName="position"/>
+            <span class="span-red" *ngIf="(position.dirty || position.touched) && position.invalid && position.errors?.required">
+              <br>
+              Position is required.
+            </span>
+          </div>
+          <div class="form-group">
+            <input type="text" class="input" placeholder="Enter Company name" formControlName="companyName"/>
+            <span class="span-red" *ngIf="(companyName.dirty || companyName.touched) && companyName.invalid && companyName.errors?.required">
+              <br>
+              Company name is required.
+            </span>
+          </div>
+          <div class="form-group">
+            <textarea id="textarea" placeholder="Enter addtional information" formControlName="shortDescription" ></textarea>
+          </div>
+        <br>
+        <button type="submit" class="button" [disabled]="!experienceForm.valid">Add</button>
+      </form>
+    </div>
+    <div id="container">
+      <h2>Experiences:</h2>
+      <div class="grid-container">
+        <ng-container *ngFor="let experience of experienceList">
+          <div>
+            <button class="del-button" #experienc (click)="deleteExperience(experience)">✖</button>
+            <span class="center">{{experience.dateStarted}} </span>-<span class="center"> {{experience.dateEnded}}</span>
+            <br>
+            <span class="center">{{experience.place}}</span>
+            <br>
+            <span class="left">{{experience.position}}</span>
+            <span class="right">{{experience.companyName}}</span>
+            <br>
+            <span class="center">{{experience.shortDescription}}</span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  

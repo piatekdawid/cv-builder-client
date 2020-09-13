@@ -1,0 +1,22 @@
+<div id="content">
+    <h2>Please enter your skills:</h2>
+    <button type="submit" style="position: fixed; right: 0; bottom: 60%;" (click)="moveForward()" class="move-button">></button>
+      <button type="submit" style="position: fixed; left: 0; bottom: 60%" (click)="moveBackward()" class="move-button"><</button>
+      <div id="container">
+        <input class="input" [formControl]="skillControl" #skill placeholder="Enter skill">
+        <br>
+        <button type="submit" class="button" (click)="onSubmit(skill.value)">+</button>
+      </div>
+      <div id="container">
+        <h2>Skills:</h2>
+        <div class="grid-container">
+          <ng-container *ngFor="let skil of skillList, let i = index">
+            <div>
+              <button class="del-button" #skil (click)="deleteSkill(skil)">✖</button>
+              <br>
+              {{skil}}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+  </div>

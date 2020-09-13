@@ -1,0 +1,32 @@
+<div id="content">
+    <h2>Please enter your achievement:</h2>
+    <div id="container">
+      <button type="submit" style="position: fixed; right: 0; bottom: 60%;" (click)="moveForward()" class="move-button">></button>
+      <button type="submit" style="position: fixed; left: 0; bottom: 60%" (click)="moveBackward()" class="move-button"><</button>
+      <form [formGroup]="achievementForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="text" class="input" placeholder="Enter title" formControlName="name"/>
+          </div>
+          <div class="form-group">
+            <textarea id="textarea" placeholder="Enter description" formControlName="description" ></textarea>
+          </div>
+        <br>
+        <button type="submit" class="button" [disabled]="!achievementForm.valid">Add</button>
+      </form>
+    </div>
+    <div id="container">
+      <h2>Achievements:</h2>
+      <div class="grid-container">
+        <ng-container *ngFor="let achievemen of achievementList, let i = index">
+          <div>
+            <button class="del-button" #achievemen (click)="deleteAchievement(achievemen)">✖</button>
+            <br>
+            <b>{{achievemen.name}}</b>
+            <br>
+            <b>{{achievemen.description}}</b>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
